@@ -32,6 +32,8 @@ def detail(request, pk):
     #     'markdown.extensions.codehilite',
     #     'markdown.extensions.toc'
     # ])
+    # 阅读量 +1
+    post.increase_views()
     md = markdown.Markdown(extensions=[
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',

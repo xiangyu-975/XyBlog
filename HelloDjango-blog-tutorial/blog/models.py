@@ -60,6 +60,12 @@ class Post(models.Model):
     # 文章摘要 可以没有文章摘要，但默认情况瞎，CharField要求我们必须存入数据，否则就会报错
     # 指定CharField的blank=True 参数值后就可以允许空值了
     excerpt = models.CharField('摘要', max_length=200, blank=True)
+    # 新增views字段记录阅读量
+    views = models.PositiveIntegerField(default=0, editable=False)
+
+    def increase_views(self):
+        self.views += 1
+        self.save(update_fields=['views'])
 
     def save(self, *args, **kwargs):
         self.modified_time = timezone.now()
