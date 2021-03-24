@@ -4,6 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+django-pure-pagination = "*"
+django-haystack = "*"
 
 [dev-packages]
 fabric = "*"

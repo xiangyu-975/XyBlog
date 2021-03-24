@@ -1,11 +1,12 @@
-<div>
+<div class="widget-tag-cloud">
     <h3 class="widget-title">标签云</h3>
     <ul>
         {% for tag in tag_list %}
             <li>
-                <a href="{% url 'blog:tag' tag.pk %}">{{ tag.name }}</a>
+                <a href="{% url 'blog:tag' tag.pk %}">{{ tag.name }} <span
+                        class="post-count">({{ tag.num_posts }})</span></a>
             </li>
-        {% empty %}
+            {% empty %}
             暂无标签！
         {% endfor %}
     </ul>

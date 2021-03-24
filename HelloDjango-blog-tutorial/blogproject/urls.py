@@ -1,3 +1,6 @@
+import sys, os
+
+sys.path.append(os.path.dirname(__file__) + os.sep + '../')
 """blogproject URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,10 +18,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from blog.feeds import AllPostsRssFeed
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
     # path('blog/', include('blog.urls')),
     path('', include('comments.urls')),
+    path('all/rss', AllPostsRssFeed(), name='rss'),
 ]

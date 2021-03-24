@@ -1,3 +1,5 @@
+import re
+
 import markdown
 from django.urls import reverse
 from django.utils import timezone
@@ -7,6 +9,9 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 from django.utils.html import strip_tags
+from markdown.extensions.toc import TocExtension
+from django.utils.text import slugify
+from django.utils.functional import cached_property
 
 
 class Category(models.Model):
@@ -18,7 +23,7 @@ class Category(models.Model):
     django 内置的全部类型可查看文档：
     https://docs.djangoproject.com/en/2.2/ref/models/fields/#field-types
     '''
-    name = models.CharField(max_length=100)
+    name = models.CharField('分类名', max_length=100)
 
     class Meta:
         verbose_name = '分类'
@@ -113,3 +118,28 @@ class Post(models.Model):
     # 记得从 django.urls 中导入 reverse 函数
     def get_absolute_url(self):
         return reverse('blog:detail', kwargs={'pk': self.pk})
+
+    def generate_rich_content(value):
+        md = markdown.Markdown(
+            extensions=[
+                "markdown.extensions.extra",
+                "markdown.extensions.codehilite",
+                TocExtension(slugify=slugify),
+            ]
+        )
+        content = md.convert(value)
+        m = re.search(r'<div class="toc">\s*<ul>(.*)</ul>\s*</div>', md.toc, re.S)
+        toc = m.group(1) if m is not None else ""
+        return {"content": content, "toc": toc}
+
+    @property
+    def toc(self):
+        return self.rich_content.get("toc", "")
+
+    @property
+    def body_html(self):
+        return self.rich_content.get("content", "")
+
+    @cached_property
+    def rich_content(self):
+        return generate_rich_content(self.body)

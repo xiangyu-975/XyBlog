@@ -5,7 +5,8 @@ name = "pypi"
 
 [packages]
 gunicorn = "*"
-
+django = "~=2.2"
+elasticsearch = ">=2,3<"
 [dev-packages]
 fabric = "*"
 

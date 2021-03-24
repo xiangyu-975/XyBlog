@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "84a88c10321b0c3fb01b71e24ab7ed16546b4424ee3311117b2430006d8e752f"
+            "sha256": "305535b8a465cbd8b7735d8390f0eadf1259c874c4c31bad7faffee7e9d364cf"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -15,7 +15,53 @@
             }
         ]
     },
-    "default": {},
+    "default": {
+        "asgiref": {
+            "hashes": [
+                "sha256:5ee950735509d04eb673bd7f7120f8fa1c9e2df495394992c73234d526907e17",
+                "sha256:7162a3cb30ab0609f1a4c95938fd73e8604f63bdba516a7f7d64b83ff09478f0"
+            ],
+            "markers": "python_version >= '3.5'",
+            "version": "==3.3.1"
+        },
+        "django": {
+            "hashes": [
+                "sha256:32ce792ee9b6a0cbbec340123e229ac9f765dff8c2a4ae9247a14b2ba3a365a7",
+                "sha256:baf099db36ad31f970775d0be5587cc58a6256a6771a44eb795b554d45f211b8"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==3.1.7"
+        },
+        "django-haystack": {
+            "hashes": [
+                "sha256:d490f920afa85471dd1fa5000bc8eff4b704daacbe09aee1a64e75cbc426f3be"
+            ],
+            "index": "pypi",
+            "version": "==3.0"
+        },
+        "django-pure-pagination": {
+            "hashes": [
+                "sha256:02b42561b8afb09f1fb6ac6dc81db13374f5f748640f31c8160a374274b54713"
+            ],
+            "index": "pypi",
+            "version": "==0.3.0"
+        },
+        "pytz": {
+            "hashes": [
+                "sha256:83a4a90894bf38e243cf052c8b58f381bfe9a7a483f6a9cab140bc7f702ac4da",
+                "sha256:eb10ce3e7736052ed3623d49975ce333bcd712c7bb19a58b9e2089d4057d0798"
+            ],
+            "version": "==2021.1"
+        },
+        "sqlparse": {
+            "hashes": [
+                "sha256:017cde379adbd6a1f15a61873f43e8274179378e95ef3fede90b5aa64d304ed0",
+                "sha256:0f91fd2e829c44362cbcfab3e9ae12e22badaa8a29ad5ff599f9ec109f0454e8"
+            ],
+            "markers": "python_version >= '3.5'",
+            "version": "==0.4.1"
+        }
+    },
     "develop": {
         "bcrypt": {
             "hashes": [
@@ -157,7 +203,7 @@
                 "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259",
                 "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.15.0"
         }
     }
