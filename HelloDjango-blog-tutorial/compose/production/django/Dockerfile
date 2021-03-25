@@ -3,8 +3,10 @@ ENV PYTHONUNBUFFERED 1
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 RUN apk update \
   # Pillow dependencies
-  && apk add jpep-dev zlib-dev freetype-dev lcms2-dev openjpep-dev tiff-dev tk-dev tcl-dev
-
+#  && apk add jpep-dev zlib-dev freetype-dev lcms2-dev openjpep-dev tiff-dev tk-dev tcl-dev
+RUN apk --update add libxml2-dev libxslt-dev libffi-dev gcc musl-dev libgcc openssl-dev curl
+RUN apk add jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev tiff-dev tk-dev tcl-dev
+RUN pip install Pillow
 WORKDIR /app
 
 RUN pip install pipenv -i https://pypi.douban.com/simple
