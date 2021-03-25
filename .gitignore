@@ -8,7 +8,7 @@ _credentials.py
 *.so
 
 
-.envs/.production
+.production
 # Distribution / packaging
 .Python
 build/

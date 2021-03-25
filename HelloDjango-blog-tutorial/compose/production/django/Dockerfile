@@ -6,7 +6,7 @@ RUN apk update \
 
 WORKDIR /app
 
-RUN pip install pipenv -i https://pypi.douban.com/simple
+RUN pip install pipenv -i https://mirrors.aliyun.com/pypi/simple
 
 COPY Pipfile /app/Pipfile
 COPY Pipfile.lock /app/Pipfile.lock
