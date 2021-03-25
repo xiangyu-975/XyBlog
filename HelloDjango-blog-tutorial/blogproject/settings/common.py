@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'haystack',
     'pure_pagination',  # 分页
     'blog.apps.BlogConfig',  # 注册Blog应用
     'comments.apps.CommentsConfig',  # 注册comments应用
@@ -67,16 +68,15 @@ WSGI_APPLICATION = 'blogproject.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # },
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'database' 'db.sqlite3'),
-    }
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'database', 'db.sqlite3'),
+    # }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -124,3 +124,12 @@ PAGINATION_SETTINGS = {
     'MARGIN_PAGES_DISPLAYED': 2,  # 分页条开头和结尾显示的页数
     'SHOW_FIRST_PAGE_WHEN_INVALID': True,  # 当请求了不存在页，显示第一页
 }
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.elasticsearch2_backend.Elasticsearch2SearchEngine',
+        'URL': '',
+        'INDEX_NAME': 'hellodjango_blog_tutorial',
+    },
+}
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.singals.RealtimeSignalProcessor'

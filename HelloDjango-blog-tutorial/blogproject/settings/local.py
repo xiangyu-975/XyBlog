@@ -7,3 +7,4 @@ SECRET_KEY = '_(!zgr+82bhdhy_)07p6s+v%q4(l!^-(ab@&dvh5z$37a32xh1'
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+HAYSTACK_CONNECTIONS['default']['URL'] = 'http://elasticsearch_local:9200/'
